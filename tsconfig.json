@@ -1,6 +1,7 @@
 {
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
+    "jsx": "react",
     "strict": true,
     "paths": {
       "@/*": [
@@ -11,7 +12,12 @@
   "include": [
     "**/*.ts",
     "**/*.tsx",
-    ".expo/types/**/*.ts",
-    "expo-env.d.ts"
-, "constants/constStyles.jsx", "screens/login.jsx", "screens/Home.jsx", "screens/HomeScreen.js", "screens/login.js", "screens/login.js", "screens/HomeScreen.js"  ]
+    "constants/constStyles.jsx",
+    "screens/Login.jsx",
+    "screens/Home.jsx",
+    "screens/HomeScreen.js",
+    "screens/login.js",
+    "screens/login.js",
+    "screens/HomeScreen.js"
+  ]
 }
