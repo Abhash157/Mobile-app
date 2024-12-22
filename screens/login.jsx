@@ -1,11 +1,12 @@
 import React from "react";
 import { View, Image, StyleSheet, Text, TextInput } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import "./app.css";
 import HomeScreen from "./Home";
-import { useNavigation } from "expo-router";
-
+import { createStaticNavigation } from "@react-navigation/native";
 const LoginPage = () => {
-  const navigation = useNavigation;
+  const navigation = useNavigation();
+
   return (
     <View style={styles.container}>
       <View
@@ -87,7 +88,10 @@ const LoginPage = () => {
           />
         </View>
 
-        <TouchableOpacity style={styles.loginButton} onPress={login}>
+        <TouchableOpacity
+          style={styles.loginButton}
+          onPress={navigation.navigate(HomeScreen)}
+        >
           Login
         </TouchableOpacity>
       </View>
@@ -151,12 +155,22 @@ const styles = StyleSheet.create({
   },
 });
 
-function login() {
-  email = document.getElementById("email");
-  password = document.getElementById("password");
-  if (email.value == "a" && password.value == "a") {
-    window.location.href = HomeScreen;
-  }
-}
+const RootStack = createNativeStackNavigator({
+  initialRouteName: "Login",
+  screens: {
+    Login: LoginPage,
+    Home: HomeScreen,
+  },
+});
+
+const Navigation = createStaticNavigation(RootStack);
+
+// function login() {
+//   email = document.getElementById("email");
+//   password = document.getElementById("password");
+//   if (email.value == "admin" && password.value == "12345") {
+//     useNavigation().navigate(Homescreen);
+//   }
+// }
 
 export default LoginPage;
